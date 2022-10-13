@@ -1,0 +1,72 @@
+vpc-0e8cd99faf580fe80
+
+aws ec2 create-security-group \
+--group-name CafeDatabaseSG \
+--description "Security group for Cafe database" \
+--vpc-id vpc-0e8cd99faf580fe80
+
+
+aws ec2 authorize-security-group-ingress \
+--group-id vpc-0e8cd99faf580fe80 \
+--protocol tcp --port 3306 \
+--source-group <CafeSecurityGroup Group ID>
+
+sg-0362008c4d7627c75
+
+aws ec2 authorize-security-group-ingress \
+--group-id sg-048e037dc54d737c3 \
+--protocol tcp --port 3306 \
+--source-group sg-0362008c4d7627c75
+
+
+
+aws ec2 create-subnet \
+--vpc-id vpc-0e8cd99faf580fe80 \
+--cidr-block 10.200.2.0/23 \
+--availability-zone us-west-2
+
+aws ec2 create-subnet \
+--vpc-id vpc-0e8cd99faf580fe80 \
+--cidr-block 10.200.10.0/23 \
+--availability-zone us-west-2b
+
+
+aws rds create-db-subnet-group \
+--db-subnet-group-name "CafeDB Subnet Group" \
+--db-subnet-group-description "DB subnet group for Cafe" \
+--subnet-ids subnet-0d254c8bb07bc3659 subnet-0d57a48150aeec9ef \
+--tags "Key=Name,Value= CafeDatabaseSubnetGroup"
+
+
+aws rds create-db-instance \
+--db-instance-identifier CafeDBInstance \
+--engine mariadb \
+--engine-version 10.5.13 \
+--db-instance-class db.t3.micro \
+--allocated-storage 20 \
+--availability-zone <CafeInstance Availability Zone> \
+--db-subnet-group-name "CafeDB Subnet Group" \
+--vpc-security-group-ids <CafeDatabaseSG Group ID> \
+--no-publicly-accessible \
+--master-username root --master-user-password 'Re:Start!9'
+
+
+
+mysqldump --user=root --password='mypassword' \
+--databases cafe_db --add-drop-database > cafedb-backup.sql
+
+
+mysql --user=admin --password='mypassword' \
+--host=cafedbinstance.c4i6i5zryyr4.us-west-2.rds.amazonaws.com \
+< cafedb-backup.sql
+
+
+mysql --user=admin --password='mypassword' \
+--host=cafedbinstance.c4i6i5zryyr4.us-west-2.rds.amazonaws.com \
+cafe_db
+
+
+
+mysql --user=root --password='Re:Start!9' \
+--host=cafedbinstance.c4i6i5zryyr4.us-west-2.rds.amazonaws.com \
+cafe_db

@@ -1,0 +1,47 @@
+aws ec2 describe-instances --filters 'Name=tag:Name,Values=Processor' --query 'Reservations[1].Instances[0].InstanceId'
+
+
+aws ec2 stop-instances --instance-ids i-0689fe407979dd200
+
+aws ec2 wait instance-stopped --instance-id i-0689fe407979dd200
+
+aws ec2 create-snapshot --volume-id vol-0bef3be963ec6d8e3
+
+aws ec2 wait snapshot-completed --snapshot-id snap-04ff1c5973282feaf
+
+aws ec2 start-instances --instance-ids i-0689fe407979dd200
+
+
+echo "* * * * *  aws ec2 create-snapshot --volume-id vol-0bef3be963ec6d8e3 2>&1 >> /tmp/cronlog" > cronjob
+
+
+aws ec2 describe-snapshots --filters "Name=volume-id,Values=vol-0bef3be963ec6d8e3"
+
+aws ec2 describe-snapshots --filters "Name=volume-id, Values=vol-0bef3be963ec6d8e3" --query 'Snapshots[*].SnapshotId'
+
+python3 snapshotter_v2.py
+
+aws ec2 describe-snapshots --filters "Name=volume-id, Values=vol-0bef3be963ec6d8e3" --query 'Snapshots[*].SnapshotId'
+
+tar xvf files.zip
+
+unzip {files.zip}
+
+aws s3api
+
+
+aws s3api put-bucket-versioning --bucket lupertech --versioning-configuration Status=Enabled
+
+aws s3 sync files s3://lupertech/files/
+
+aws s3 ls s3://lupertech/files/
+
+aws s3 sync files s3://lupertech/files/ --delete
+
+aws s3 ls s3://lupertech/files/
+
+aws s3api list-object-versions --bucket lupertech --prefix files/file1.txt
+
+aws s3api get-object --bucket lupertech --key files/file1.txt --version-id VERSION-ID files/file1.txt
+
+aws s3api get-bucket-versioning --bucket lupertech 

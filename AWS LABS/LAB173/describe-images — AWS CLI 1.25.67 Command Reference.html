@@ -1,0 +1,691 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0073)https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+  
+    <title>describe-images — AWS CLI 1.25.67 Command Reference</title>
+  <link rel="stylesheet" type="text/css" href="./describe-images — AWS CLI 1.25.67 Command Reference_files/bootstrap.min.css">
+  <script type="text/javascript" src="./describe-images — AWS CLI 1.25.67 Command Reference_files/jquery-1.9.1.min.js.download"></script>
+  <script src="./describe-images — AWS CLI 1.25.67 Command Reference_files/sdk-priv.js.download" async="true"></script>
+    
+    <link rel="stylesheet" href="./describe-images — AWS CLI 1.25.67 Command Reference_files/guzzle.css" type="text/css">
+    <link rel="stylesheet" href="./describe-images — AWS CLI 1.25.67 Command Reference_files/pygments.css" type="text/css">
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.25.67',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="./describe-images — AWS CLI 1.25.67 Command Reference_files/jquery.js.download"></script>
+    <script type="text/javascript" src="./describe-images — AWS CLI 1.25.67 Command Reference_files/underscore.js.download"></script>
+    <script type="text/javascript" src="./describe-images — AWS CLI 1.25.67 Command Reference_files/doctools.js.download"></script>
+    <link rel="top" title="AWS CLI 1.25.67 Command Reference" href="https://docs.aws.amazon.com/cli/latest/index.html">
+    <link rel="up" title="ec2" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/index.html">
+    <link rel="next" title="describe-import-image-tasks" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-import-image-tasks.html">
+    <link rel="prev" title="describe-image-attribute" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-image-attribute.html">
+  <script type="text/javascript" src="./describe-images — AWS CLI 1.25.67 Command Reference_files/awsdocs-boot.js.download"></script><style>#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-btn{flex:0 1 100%;padding:5px 20px;box-sizing:border-box;border:0;background-color:#eaeded;color:#000;font-weight:700;border-radius:2px;cursor:pointer;user-select:none;display:inline-block;text-align:center;font-size:14px;position:relative}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-btn:hover{background-color:#d5dbdb}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-btn:focus{outline:none;text-decoration:none}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-btn:focus::before{content:" ";display:block;position:absolute;left:-2px;top:-2px;width:calc(100% + 4px);height:calc(100% + 4px);border-radius:2px;box-shadow:0 0 0 2px #00a1c9}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-btn.awsccc-u-btn-primary{background-color:#ec7211}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-btn.awsccc-u-btn-primary span{color:#fff}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-btn.awsccc-u-btn-primary:hover{background-color:#eb5f07}</style><style>#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c{position:fixed;bottom:0;left:0;width:100%;z-index:10000}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-content{position:relative;background:linear-gradient(180deg, rgba(21, 28, 39, 0.98) 0%, rgba(38, 51, 77, 0.98) 100%);box-shadow:0px -2px 5px 0px rgba(0,0,0,.5);padding:30px 30px 15px;border-top:solid 1px #306da3;display:flex;flex-direction:column}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-text-section{display:flex;flex-direction:column;flex-shrink:1;padding:0px}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-title{font-weight:700;padding:0 0 5px;margin:0;color:#fff}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-buttons{display:flex;justify-content:center;flex-wrap:wrap}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-buttons .awsccc-u-btn{margin-bottom:15px;padding-left:20px;padding-right:20px}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-text{flex:1 1 100%;margin:0 0 15px;color:#eaeded}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c.awsc-bot-above-f-imp{z-index:999}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c.dark-mode-enabled #awsccc-cb-content{background:none;background-color:#2a2e33}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c.dark-mode-enabled .awsccc-u-btn-secondary{background-color:#2a2e33}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c.dark-mode-enabled .awsccc-u-btn-secondary span{color:#d5dbdb}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c.dark-mode-enabled .awsccc-u-btn-secondary:hover{background-color:#21252c}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c.dark-mode-enabled .awsccc-u-btn-primary span{color:#16191f}@media screen and (min-width: 785px){#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-content{padding-bottom:40px;padding-left:20px;padding-right:20px;display:flex;justify-content:space-between}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-buttons .awsccc-u-btn{flex:1 0 25%;margin:10px 5px 0}}@media screen and (min-width: 920px){#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-content{flex-direction:row;padding-left:40px;padding-right:40px}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-actions{flex-wrap:nowrap}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-text{flex:1;padding-right:40px}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-buttons .awsccc-u-btn{flex:0 1 auto;margin:10px 5px 0}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-buttons{flex-wrap:nowrap;display:flex;flex-direction:column;gap:10px;width:max-content}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-buttons .awsccc-u-btn{margin-top:0}}@media screen and (min-width: 1020px){#awsccc-sb-ux-c #awsccc-sb-a.awsccc-Rtl #awsccc-cb-text{padding-left:40px;padding-right:0}}div[data-id=awsccc-cb]{display:none}</style><style>#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-i-container{padding-bottom:15px;border-bottom:1px solid #eee;margin-bottom:10px}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-i-container span,#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-i-container a{font-size:15px}</style><style>#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-cb-hidden{text-indent:-9999px;position:absolute}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-cb-label{position:relative;display:inline-block;line-height:0}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-cb-text{line-height:16px;vertical-align:top}#awsccc-sb-ux-c #awsccc-sb-a .awscc-u-cb-checkbox,#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-cb-input{height:14px;width:14px;z-index:1;pointer-events:none;fill:none}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-cb-outer{margin-right:8px;height:14px;width:14px;display:inline-block}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-cb-input{padding:0;margin:0;position:absolute;z-index:0;opacity:0}#awsccc-sb-ux-c #awsccc-sb-a .awscc-u-cb-checkbox-rect{background-color:#fff;fill:#fff;stroke:#aab7b8;stroke-width:1}#awsccc-sb-ux-c #awsccc-sb-a .awscc-u-cb-checkbox-poly-line{opacity:1;stroke:#fff;stroke-width:2;fill:none}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-cb-checkbox-active .awscc-u-cb-checkbox-rect{fill:#0073bb;stroke:#0073bb}#awsccc-sb-ux-c #awsccc-sb-a .awscc-u-cb-checkbox-container{position:relative;line-height:0}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-cb-focused:before{content:" ";display:block;position:absolute;left:-2px;top:-2px;width:calc(100% + 4px);height:calc(100% + 4px);border-radius:2px;box-shadow:0 0 0 2px #00a1c9}#awsccc-sb-ux-c #awsccc-sb-a.awsccc-Rtl .awsccc-cs-s-cb-outer{margin-left:8px;margin-right:0}</style><style>#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-container{position:relative;margin-bottom:20px}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-container .awsccc-cs-s-title{font-size:18px;line-height:20px;flex:0 0 100%;margin:0 0 5px;z-index:10;display:inline-block;line-height:normal;font-weight:400}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-container .awsccc-cs-s-text{flex:0 0 80%;border-top:1px solid #eee;padding-top:5px}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-container .awsccc-cs-s-action{display:flex;justify-content:flex-end;flex:1;position:absolute;top:3px;right:20px}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-container .awsccc-cs-s-paragraph{margin-top:0;font-size:14px;line-height:20px;padding:0;margin-bottom:15px}@media screen and (min-width: 700px){#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-container{border-bottom:1px solid #eee;display:flex;flex-wrap:wrap}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-container .awsccc-cs-s-title{padding-bottom:0}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-container .awsccc-cs-s-text{border-top:0}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-container .awsccc-cs-s-action{justify-content:center;position:relative;top:auto;right:auto;padding-top:20px}}</style><style>#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-l-container span,#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-l-container a{font-size:12px;line-height:15px}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-l-container span:focus,#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-l-container a:focus{outline-style:solid;outline-color:#00a1c9;outline-width:2px}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-l-container p>span{color:#687078}</style><style>#awsccc-sb-ux-c #awsccc-sb-a.awsccc-Rtl #awsccc-cs-f-c{text-align:left}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-f-c{text-decoration:none;padding:10px 20px;text-align:right;border-top:1px solid #eaeded;display:flex;justify-content:center;flex-wrap:wrap}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-f-c .awsccc-u-btn{margin-left:10px}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-f-c .awsccc-u-btn.awsccc-u-btn-secondary{background-color:#fff;border-color:#fff;color:#545b64;margin-bottom:6px}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-f-c .awsccc-u-btn.awsccc-u-btn-secondary:hover{color:#000;background-color:#fafafa}@media screen and (min-width: 700px){#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-f-c{display:block}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-f-c .awsccc-u-btn.awsccc-u-btn-secondary{margin-bottom:0}}</style><style>#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-container{display:flex;align-items:center;justify-items:center;bottom:0;left:0;right:0;top:0;position:fixed;z-index:10002;outline:0;overflow:hidden}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-container-inner{max-width:820px;box-sizing:border-box;outline:none;margin:10px auto;width:calc(100vw - 20px)}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-content{background-color:#fff;border-radius:0;box-sizing:border-box;margin-bottom:0;word-wrap:break-word;box-shadow:0 1px 1px 0 rgba(0,28,36,.3),1px 1px 1px 0 rgba(0,28,36,.15),-1px 1px 1px 0 rgba(0,28,36,.15)}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-header{background-color:#fafafa;padding:19px 20px;border-bottom:1px solid #eaeded}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-title{min-width:0;word-break:break-word;color:#16191f;flex:auto}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-title h2{font-size:18px;font-weight:700;margin:0}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-modalBody{overflow-y:auto;max-height:calc(100vh - 200px);padding:19px 20px}@media screen and (max-width: 480px){#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-modalBody{max-height:calc(100vh - 275px)}}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-modalOverlay{background-color:rgba(242,243,243,.9);position:fixed;z-index:10001;right:0;top:0;bottom:0;left:0}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled{background-color:#2a2e33}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalOverlay{background-color:rgba(22,25,31,.8)}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-header{background-color:#21252c;border-bottom:1px solid #414750}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-title h2{color:#eaeded}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody{background-color:#2a2e33}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody #awsccc-cs-i-container{border-bottom:1px solid #414750}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody #awsccc-cs-i-container span{color:#eaeded}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody .awsccc-cs-s-container{border-bottom:1px solid #414750}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody .awsccc-cs-s-container h3{color:#eaeded}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody .awsccc-cs-s-container p{color:#eaeded}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody .awsccc-cs-s-container span{color:#eaeded}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody .awsccc-cs-s-container rect{fill:#1a2029}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody .awsccc-cs-s-container .awsccc-cs-s-text{border-top:0}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody .awsccc-cs-s-container .awscc-u-cb-checkbox-poly-line{display:none}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody .awsccc-cs-s-container .awsccc-u-cb-checkbox-active .awscc-u-cb-checkbox-poly-line{display:inline-block}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody .awsccc-cs-s-container .awsccc-u-cb-checkbox-active .awscc-u-cb-checkbox-rect{fill:#00a1c9;stroke:#00a1c9}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-f-c{border-top:1px solid #414750;background-color:#2a2e33}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-f-c .awsccc-u-btn-secondary{background-color:#2a2e33}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-f-c .awsccc-u-btn-secondary span{color:#d5dbdb}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-f-c .awsccc-u-btn-secondary:hover{background-color:#21252c}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-f-c .awsccc-u-btn-primary span{color:#16191f}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-l-container span{color:#eaeded}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-l-container span a{display:inline-block}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-l-container span a span{color:#44b9d6}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-l-container path{color:#44b9d6}</style><style>#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-i-open-c{display:inline-block;vertical-align:middle;line-height:1em;padding-left:.3em}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-i-open-c svg{stroke-width:2px;pointer-events:none;fill:none;padding-bottom:1px;height:10px;width:10px}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-i-open-c svg .awsccc-stroke-linecap-square{stroke-linecap:square}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-i-open-c svg .awsccc-stroke-linejoin-round{stroke-linejoin:round}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-i-open-c svg path{stroke:currentColor}</style><style>#awsccc-sb-ux-c #awsccc-sb-a *{font-family:"Amazon Ember","HelveticaNeue","Helvetica Neue","Amazon Ember",Roboto,"Roboto-Regular","Amazon Ember",Helvetica,Arial,sans-serif;font-size:14px;line-height:21px;color:#16191f;text-align:left;background:none;border:0}#awsccc-sb-ux-c #awsccc-sb-a.awsccc-Rtl *{direction:rtl;text-align:right}#awsccc-sb-ux-c #awsccc-sb-a.awsccc-Rtl .awsccc-cs-s-container .awsccc-cs-s-action .awsccc-em-container{right:auto;left:20px}@media screen and (min-width: 1020px){#awsccc-sb-ux-c #awsccc-sb-a.awsccc-Rtl #awsccc-cb-c #awsccc-cb-title{padding-right:40px}}#awsccc-sb-ux-c #awsccc-sb-a a,#awsccc-sb-ux-c #awsccc-sb-a a>span,#awsccc-sb-ux-c #awsccc-sb-a a svg path{color:#0073bb;text-decoration:none}#awsccc-sb-ux-c #awsccc-sb-a a:hover,#awsccc-sb-ux-c #awsccc-sb-a a>span:hover,#awsccc-sb-ux-c #awsccc-sb-a a svg path:hover{color:#0073bb;text-decoration:underline}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-tab-helper{outline:0;text-decoration:none}.awsccc-cs-modal-open .awsccc-em-modal-open{overflow:hidden;-webkit-box-sizing:border-box;box-sizing:border-box}</style><style>#awsccc-sb-ux-c #awsccc-sb-a #awsccc-em-container{display:flex;align-items:center;justify-items:center;bottom:0;left:0;right:0;top:0;position:fixed;z-index:10002;outline:0;overflow:hidden}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-em-container-inner{max-width:820px;box-sizing:border-box;outline:none;margin:10px auto;width:calc(100vw - 20px)}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-em-content{background-color:#fff;border-radius:0;box-sizing:border-box;margin-bottom:0;word-wrap:break-word;box-shadow:0 1px 1px 0 rgba(0,28,36,.3),1px 1px 1px 0 rgba(0,28,36,.15),-1px 1px 1px 0 rgba(0,28,36,.15)}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-em-header{background-color:#fafafa;padding:19px 20px;border-bottom:1px solid #eaeded}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-em-title{min-width:0;word-break:break-word;color:#16191f;flex:auto}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-em-title h2{font-size:18px;font-weight:700;margin:0}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-em-modalBody{overflow-y:auto;max-height:calc(100vh - 200px);padding:5px 20px}@media screen and (max-width: 480px){#awsccc-sb-ux-c #awsccc-sb-a #awsccc-em-modalBody{max-height:calc(100vh - 275px)}}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-em-modalOverlay{background-color:rgba(242,243,243,.9);position:fixed;z-index:10001;right:0;top:0;bottom:0;left:0}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled{background-color:#2a2e33}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-em-modalOverlay{background-color:rgba(22,25,31,.8)}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-em-header{background-color:#21252c;border-bottom:1px solid #414750}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-em-title h2{color:#eaeded}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-emm-paragraph span{color:#eaeded}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-em-modalBody{background-color:#2a2e33}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-em-modalBody .awsccc-em-container{border-bottom:1px solid #414750}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-em-modalBody .awsccc-em-container h3{color:#eaeded}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-em-modalBody .awsccc-em-container p{color:#eaeded}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-em-modalBody .awsccc-em-container span{color:#eaeded}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-em-modalBody .awsccc-em-container rect{fill:#1a2029}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-em-modalBody .awsccc-em-container .awsccc-em-text{border-top:0}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-em-f-c{border-top:1px solid #414750;background-color:#2a2e33}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-em-f-c .awsccc-u-btn-primary span{color:#16191f}#awsccc-sb-ux-c #awsccc-sb-a.awsccc-Rtl #awsccc-em-f-c{text-align:left}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-em-f-c{text-decoration:none;padding:10px 20px;text-align:right;border-top:1px solid #eaeded;justify-content:center;flex-wrap:wrap}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-em-f-c .awsccc-u-btn{margin-left:10px}@media screen and (min-width: 700px){#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-f-c{display:block}}div[data-id=awsccc-cs]{display:none}</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="guide-name" content="API Reference">
+  <meta name="service-name" content="AWS CLI">
+  <link rel="stylesheet" type="text/css" href="./describe-images — AWS CLI 1.25.67 Command Reference_files/bootstrap-responsive.min.css">
+  
+   
+
+  <style>#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-btn{flex:0 1 100%;padding:5px 20px;box-sizing:border-box;border:0;background-color:#eaeded;color:#000;font-weight:700;border-radius:2px;cursor:pointer;user-select:none;display:inline-block;text-align:center;font-size:14px;position:relative}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-btn:hover{background-color:#d5dbdb}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-btn:focus{outline:none;text-decoration:none}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-btn:focus::before{content:" ";display:block;position:absolute;left:-2px;top:-2px;width:calc(100% + 4px);height:calc(100% + 4px);border-radius:2px;box-shadow:0 0 0 2px #00a1c9}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-btn.awsccc-u-btn-primary{background-color:#ec7211}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-btn.awsccc-u-btn-primary span{color:#fff}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-btn.awsccc-u-btn-primary:hover{background-color:#eb5f07}</style><style>#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c{position:fixed;bottom:0;left:0;width:100%;z-index:10000}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-content{position:relative;background:linear-gradient(180deg, rgba(21, 28, 39, 0.98) 0%, rgba(38, 51, 77, 0.98) 100%);box-shadow:0px -2px 5px 0px rgba(0,0,0,.5);padding:30px 30px 15px;border-top:solid 1px #306da3}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-title{font-weight:700;padding:0 0 5px;margin:0;color:#fff}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-actions{flex-shrink:1;display:flex;align-items:flex-start;flex-wrap:wrap}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-buttons{flex:1;display:flex;justify-content:center;flex-wrap:wrap}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-buttons .awsccc-u-btn{margin-bottom:15px;padding-left:40px;padding-right:40px}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-text{flex:1 1 100%;margin:0 0 15px;color:#eaeded}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c.awsc-bot-above-f-imp{z-index:999}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c.dark-mode-enabled #awsccc-cb-content{background:none;background-color:#2a2e33}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c.dark-mode-enabled .awsccc-u-btn-secondary{background-color:#2a2e33}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c.dark-mode-enabled .awsccc-u-btn-secondary span{color:#d5dbdb}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c.dark-mode-enabled .awsccc-u-btn-secondary:hover{background-color:#21252c}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c.dark-mode-enabled .awsccc-u-btn-primary span{color:#16191f}@media screen and (min-width: 700px){#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-content{padding-bottom:40px;padding-left:50px;padding-right:50px}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-buttons .awsccc-u-btn{flex:0 1 auto;margin:10px 5px 0}}@media screen and (min-width: 1020px){#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-content{padding-bottom:15px}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-actions{flex-wrap:nowrap}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-text{flex:1;padding-right:40px}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-buttons{flex-wrap:nowrap;flex:0 1 auto}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cb-c #awsccc-cb-buttons .awsccc-u-btn{flex:0 0 auto;margin-top:0}}@media screen and (min-width: 1020px){#awsccc-sb-ux-c #awsccc-sb-a.awsccc-Rtl #awsccc-cb-text{padding-left:40px;padding-right:0}}div[data-id=awsccc-cb]{display:none}</style><style>#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-i-container{padding-bottom:15px;border-bottom:1px solid #eee;margin-bottom:10px}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-i-container span,#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-i-container a{font-size:15px}</style><style>#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-cb-hidden{text-indent:-9999px;position:absolute}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-cb-label{position:relative;display:inline-block;line-height:0}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-cb-text{line-height:16px;vertical-align:top}#awsccc-sb-ux-c #awsccc-sb-a .awscc-u-cb-checkbox,#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-cb-input{height:14px;width:14px;z-index:1;pointer-events:none;fill:none}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-cb-outer{margin-right:8px;height:14px;width:14px;display:inline-block}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-cb-input{padding:0;margin:0;position:absolute;z-index:0;opacity:0}#awsccc-sb-ux-c #awsccc-sb-a .awscc-u-cb-checkbox-rect{background-color:#fff;fill:#fff;stroke:#aab7b8;stroke-width:1}#awsccc-sb-ux-c #awsccc-sb-a .awscc-u-cb-checkbox-poly-line{opacity:1;stroke:#fff;stroke-width:2;fill:none}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-cb-checkbox-active .awscc-u-cb-checkbox-rect{fill:#0073bb;stroke:#0073bb}#awsccc-sb-ux-c #awsccc-sb-a .awscc-u-cb-checkbox-container{position:relative;line-height:0}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-cb-focused:before{content:" ";display:block;position:absolute;left:-2px;top:-2px;width:calc(100% + 4px);height:calc(100% + 4px);border-radius:2px;box-shadow:0 0 0 2px #00a1c9}#awsccc-sb-ux-c #awsccc-sb-a.awsccc-Rtl .awsccc-cs-s-cb-outer{margin-left:8px;margin-right:0}</style><style>#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-container{position:relative;margin-bottom:20px}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-container .awsccc-cs-s-title{font-size:18px;line-height:20px;flex:0 0 100%;margin:0 0 5px;z-index:10;display:inline-block;line-height:normal;font-weight:400}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-container .awsccc-cs-s-text{flex:0 0 80%;border-top:1px solid #eee;padding-top:5px}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-container .awsccc-cs-s-action{display:flex;justify-content:flex-end;flex:1;position:absolute;top:3px;right:20px}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-container .awsccc-cs-s-paragraph{margin-top:0;font-size:14px;line-height:20px;padding:0;margin-bottom:15px}@media screen and (min-width: 700px){#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-container{border-bottom:1px solid #eee;display:flex;flex-wrap:wrap}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-container .awsccc-cs-s-title{padding-bottom:0}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-container .awsccc-cs-s-text{border-top:0}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-cs-s-container .awsccc-cs-s-action{justify-content:center;position:relative;top:auto;right:auto;padding-top:20px}}</style><style>#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-l-container span,#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-l-container a{font-size:12px;line-height:15px}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-l-container span:focus,#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-l-container a:focus{outline-style:solid;outline-color:#00a1c9;outline-width:2px}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-l-container p>span{color:#687078}</style><style>#awsccc-sb-ux-c #awsccc-sb-a.awsccc-Rtl #awsccc-cs-f-c{text-align:left}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-f-c{text-decoration:none;padding:10px 20px;text-align:right;border-top:1px solid #eaeded;display:flex;justify-content:center;flex-wrap:wrap}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-f-c .awsccc-u-btn{margin-left:10px}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-f-c .awsccc-u-btn.awsccc-u-btn-secondary{background-color:#fff;border-color:#fff;color:#545b64;margin-bottom:6px}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-f-c .awsccc-u-btn.awsccc-u-btn-secondary:hover{color:#000;background-color:#fafafa}@media screen and (min-width: 700px){#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-f-c{display:block}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-f-c .awsccc-u-btn.awsccc-u-btn-secondary{margin-bottom:0}}</style><style>#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-container{display:flex;align-items:center;justify-items:center;bottom:0;left:0;right:0;top:0;position:fixed;z-index:10002;outline:0;overflow:hidden}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-container-inner{max-width:820px;box-sizing:border-box;outline:none;margin:10px auto;width:calc(100vw - 20px)}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-content{background-color:#fff;border-radius:0;box-sizing:border-box;margin-bottom:0;word-wrap:break-word;box-shadow:0 1px 1px 0 rgba(0,28,36,.3),1px 1px 1px 0 rgba(0,28,36,.15),-1px 1px 1px 0 rgba(0,28,36,.15)}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-header{background-color:#fafafa;padding:19px 20px;border-bottom:1px solid #eaeded}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-title{min-width:0;word-break:break-word;color:#16191f;flex:auto}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-title h2{font-size:18px;font-weight:700;margin:0}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-modalBody{overflow-y:auto;max-height:calc(100vh - 200px);padding:19px 20px}@media screen and (max-width: 480px){#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-modalBody{max-height:calc(100vh - 275px)}}#awsccc-sb-ux-c #awsccc-sb-a #awsccc-cs-modalOverlay{background-color:rgba(242,243,243,.9);position:fixed;z-index:10001;right:0;top:0;bottom:0;left:0}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled{background-color:#2a2e33}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalOverlay{background-color:rgba(22,25,31,.8)}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-header{background-color:#21252c;border-bottom:1px solid #414750}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-title h2{color:#eaeded}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody{background-color:#2a2e33}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody #awsccc-cs-i-container{border-bottom:1px solid #414750}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody #awsccc-cs-i-container span{color:#eaeded}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody .awsccc-cs-s-container{border-bottom:1px solid #414750}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody .awsccc-cs-s-container h3{color:#eaeded}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody .awsccc-cs-s-container p{color:#eaeded}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody .awsccc-cs-s-container span{color:#eaeded}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody .awsccc-cs-s-container rect{fill:#1a2029}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody .awsccc-cs-s-container .awsccc-cs-s-text{border-top:0}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody .awsccc-cs-s-container .awscc-u-cb-checkbox-poly-line{display:none}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody .awsccc-cs-s-container .awsccc-u-cb-checkbox-active .awscc-u-cb-checkbox-poly-line{display:inline-block}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-modalBody .awsccc-cs-s-container .awsccc-u-cb-checkbox-active .awscc-u-cb-checkbox-rect{fill:#00a1c9;stroke:#00a1c9}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-f-c{border-top:1px solid #414750;background-color:#2a2e33}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-f-c .awsccc-u-btn-secondary{background-color:#2a2e33}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-f-c .awsccc-u-btn-secondary span{color:#d5dbdb}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-f-c .awsccc-u-btn-secondary:hover{background-color:#21252c}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-f-c .awsccc-u-btn-primary span{color:#16191f}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-l-container span{color:#eaeded}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-l-container span a{display:inline-block}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-l-container span a span{color:#44b9d6}#awsccc-sb-ux-c #awsccc-sb-a .dark-mode-enabled #awsccc-cs-l-container path{color:#44b9d6}div[data-id=awsccc-cs]{display:none}</style><style>#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-i-open-c{display:inline-block;vertical-align:middle;line-height:1em;padding-left:.3em}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-i-open-c svg{stroke-width:2px;pointer-events:none;fill:none;padding-bottom:1px;height:10px;width:10px}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-i-open-c svg .awsccc-stroke-linecap-square{stroke-linecap:square}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-i-open-c svg .awsccc-stroke-linejoin-round{stroke-linejoin:round}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-u-i-open-c svg path{stroke:currentColor}</style><style>#awsccc-sb-ux-c #awsccc-sb-a *{font-family:"Amazon Ember","HelveticaNeue","Helvetica Neue","Amazon Ember",Roboto,"Roboto-Regular","Amazon Ember",Helvetica,Arial,sans-serif;font-size:14px;line-height:21px;color:#16191f;text-align:left;background:none;border:0}#awsccc-sb-ux-c #awsccc-sb-a.awsccc-Rtl *{direction:rtl;text-align:right}#awsccc-sb-ux-c #awsccc-sb-a.awsccc-Rtl .awsccc-cs-s-container .awsccc-cs-s-action{right:auto;left:20px}@media screen and (min-width: 1020px){#awsccc-sb-ux-c #awsccc-sb-a.awsccc-Rtl #awsccc-cb-c #awsccc-cb-title{padding-right:40px}}#awsccc-sb-ux-c #awsccc-sb-a a,#awsccc-sb-ux-c #awsccc-sb-a a>span,#awsccc-sb-ux-c #awsccc-sb-a a svg path{color:#0073bb;text-decoration:none}#awsccc-sb-ux-c #awsccc-sb-a a:hover,#awsccc-sb-ux-c #awsccc-sb-a a>span:hover,#awsccc-sb-ux-c #awsccc-sb-a a svg path:hover{color:#0073bb;text-decoration:underline}#awsccc-sb-ux-c #awsccc-sb-a .awsccc-tab-helper{outline:0;text-decoration:none}.awsccc-cs-modal-open{overflow:hidden;-webkit-box-sizing:border-box;box-sizing:border-box}</style></head>
+  <body role="document"><div id="awsccc-sb-ux-c"><div id="awsccc-sb-a" class=""><div data-id="awsccc-cb" style="display: none;"><div id="awsccc-cb-c" data-id="awsccc-cb-tabstart" class="awsccc-tab-helper" tabindex="-1"><div id="awsccc-cb-content"><div id="awsccc-cb-text-section"><h2 id="awsccc-cb-title">Select your cookie preferences</h2><p id="awsccc-cb-text">We use cookies and similar tools to enhance your experience, provide our services, deliver relevant advertising, and make improvements. Approved third parties also use these tools to help us deliver advertising and provide certain site features.</p></div><div id="awsccc-cb-actions"><div id="awsccc-cb-buttons"><button tabindex="0" data-id="awsccc-cb-btn-accept" type="submit" aria-label="Accept all cookies" class="awsccc-u-btn awsccc-u-btn-primary"><span>Accept all cookies</span></button><button tabindex="0" data-id="awsccc-cb-btn-continue" type="submit" aria-label="Customize cookie preferences" class="awsccc-u-btn awsccc-u-btn-secondary"><span>Continue without accepting</span></button><button tabindex="0" data-id="awsccc-cb-btn-customize" type="submit" aria-label="Customize cookie preferences" class="awsccc-u-btn awsccc-u-btn-secondary"><span>Customize cookies</span></button></div></div></div></div></div><div data-id="awsccc-cs" tabindex="0" class="" style="display: none;"><div id="awsccc-cs-container" role="dialog" aria-modal="true" data-awsccc-modal-toggle="true" data-id="awsccc-cs-tabtrap" tabindex="-1"><div id="awsccc-cs-container-inner"><div id="awsccc-cs-content"><div id="awsccc-cs-header"><div id="awsccc-cs-title"><h2>Customize cookie preferences</h2></div></div><div id="awsccc-cs-modalBody"><div id="awsccc-cs-i-container"><span>We use cookies and similar tools (collectively, "cookies") for the following purposes.</span></div><div data-category="essential" class="awsccc-cs-s-container"><h3 class="awsccc-cs-s-title">Essential</h3><div class="awsccc-cs-s-text"><p class="awsccc-cs-s-paragraph">Essential cookies are necessary to provide our site and services and cannot be deactivated. They are usually set in response to your actions on the site, such as setting your privacy preferences, signing in, or filling in forms. </p></div><div class="awsccc-cs-s-action"></div></div><div data-category="performance" class="awsccc-cs-s-container"><h3 class="awsccc-cs-s-title">Performance</h3><div class="awsccc-cs-s-text"><p class="awsccc-cs-s-paragraph">Performance cookies provide anonymous statistics about how customers navigate our site so we can improve site experience and performance. Approved third parties may perform analytics on our behalf, but they cannot use the data for their own purposes.</p></div><div class="awsccc-cs-s-action"><div><div class="awsccc-cs-s-cb-outer"><div class="awscc-u-cb-checkbox-container" data-id="awsccc-u-cb-performance-container"><label data-id="awsccc-u-cb-performance-label" class="awsccc-u-cb-label awsccc-u-cb-checkbox-active"><input id="awsccc-u-cb-performance" class="awsccc-u-cb-input" type="checkbox" aria-checked="true" checked=""><span class="awsccc-cs-s-cb-hidden">Allow performance category</span><svg viewBox="0 0 14 14" aria-hidden="true" focusable="false" class="awscc-u-cb-checkbox"><rect class="awscc-u-cb-checkbox-rect" x="0.5" y="0.5" rx="1.5" ry="1.5" width="13" height="13"></rect><polyline class="awscc-u-cb-checkbox-poly-line " points="2.5,7 6,10 11,3"></polyline></svg></label></div></div><span class="awsccc-u-cb-text">Allowed</span></div></div></div><div data-category="functional" class="awsccc-cs-s-container"><h3 class="awsccc-cs-s-title">Functional</h3><div class="awsccc-cs-s-text"><p class="awsccc-cs-s-paragraph">Functional cookies help us provide useful site features, remember your preferences, and display relevant content. Approved third parties may set these cookies to provide certain site features. If you do not allow these cookies, then some or all of these services may not function properly.</p></div><div class="awsccc-cs-s-action"><div><div class="awsccc-cs-s-cb-outer"><div class="awscc-u-cb-checkbox-container" data-id="awsccc-u-cb-functional-container"><label data-id="awsccc-u-cb-functional-label" class="awsccc-u-cb-label awsccc-u-cb-checkbox-active"><input id="awsccc-u-cb-functional" class="awsccc-u-cb-input" type="checkbox" aria-checked="true" checked=""><span class="awsccc-cs-s-cb-hidden">Allow functional category</span><svg viewBox="0 0 14 14" aria-hidden="true" focusable="false" class="awscc-u-cb-checkbox"><rect class="awscc-u-cb-checkbox-rect" x="0.5" y="0.5" rx="1.5" ry="1.5" width="13" height="13"></rect><polyline class="awscc-u-cb-checkbox-poly-line " points="2.5,7 6,10 11,3"></polyline></svg></label></div></div><span class="awsccc-u-cb-text">Allowed</span></div></div></div><div data-category="advertising" class="awsccc-cs-s-container"><h3 class="awsccc-cs-s-title">Advertising</h3><div class="awsccc-cs-s-text"><p class="awsccc-cs-s-paragraph">Advertising cookies may be set through our site by us or our advertising partners and help us deliver relevant marketing content. If you do not allow these cookies, you will experience less relevant advertising.</p></div><div class="awsccc-cs-s-action"><div><div class="awsccc-cs-s-cb-outer"><div class="awscc-u-cb-checkbox-container" data-id="awsccc-u-cb-advertising-container"><label data-id="awsccc-u-cb-advertising-label" class="awsccc-u-cb-label awsccc-u-cb-checkbox-active"><input id="awsccc-u-cb-advertising" class="awsccc-u-cb-input" type="checkbox" aria-checked="true" checked=""><span class="awsccc-cs-s-cb-hidden">Allow advertising category</span><svg viewBox="0 0 14 14" aria-hidden="true" focusable="false" class="awscc-u-cb-checkbox"><rect class="awscc-u-cb-checkbox-rect" x="0.5" y="0.5" rx="1.5" ry="1.5" width="13" height="13"></rect><polyline class="awscc-u-cb-checkbox-poly-line " points="2.5,7 6,10 11,3"></polyline></svg></label></div></div><span class="awsccc-u-cb-text">Allowed</span></div></div></div><div id="awsccc-cs-l-container"><p><span>Blocking some types of cookies may impact your experience of our sites. You may review and change your choices at any time by clicking Cookie preferences in the footer of this site. We and selected third-parties use cookies or similar technologies as specified in the&nbsp;<a data-id="awsccc-cs-f-notice" href="https://aws.amazon.com/legal/cookies/" target="_blank" rel="noopener noreferrer" title="Opens in a new Window"><span>AWS Cookie Notice<div class="awsccc-u-i-open-c"><svg class="awsccc-u-i-open" viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path class="awsccc-stroke-linecap-square" d="M10 2h4v4"></path><path d="M6 10l8-8"></path><path class="awsccc-stroke-linejoin-round" d="M14 9.048V14H2V2h5"></path></svg></div></span></a>.</span></p></div></div><div id="awsccc-cs-f-c"><button tabindex="0" data-id="awsccc-cs-btn-cancel" type="submit" aria-label="Cancel customizing cookie preferences" class="awsccc-u-btn awsccc-u-btn-secondary"><span>Cancel</span></button><button tabindex="0" data-id="awsccc-cs-btn-save" type="submit" aria-label="Save customized cookie preferences" class="awsccc-u-btn awsccc-u-btn-primary"><span>Save preferences</span></button></div></div></div></div><div id="awsccc-cs-modalOverlay"></div><div data-id="awsccc-cs-tabtrap" tabindex="-1" class="awsccc-tab-helper"></div></div><div data-id="awsccc-em-modal" tabindex="0" class="" style="display: none;"><div id="awsccc-em-container" role="dialog" aria-modal="true" data-awsccc-emm-modal-toggle="true" data-id="awsccc-em-tabtrap" tabindex="-1"><div id="awsccc-em-container-inner"><div id="awsccc-em-content"><div id="awsccc-em-header"><div id="awsccc-em-title"><h2>Unable to save cookie preferences</h2></div></div><div id="awsccc-em-modalBody"><p id="awsccc-emm-paragraph"><span>We will only store essential cookies at this time, because we were unable to save your cookie preferences.<br><br>If you want to change your cookie preferences, try again later using the link in the AWS console footer, or contact support if the problem persists.</span></p></div><div id="awsccc-em-f-c"><button tabindex="0" data-id="awsccc-em-btn-dismiss" type="submit" aria-label="Dismiss error message modal" class="awsccc-u-btn awsccc-u-btn-primary"><span>Dismiss</span></button></div></div></div></div><div id="awsccc-em-modalOverlay"></div><div data-id="awsccc-em-tabtrap" tabindex="-1" class="awsccc-tab-helper"></div></div></div></div>
+  <div class="navbar navbar-fixed-top ">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="https://docs.aws.amazon.com/cli/latest/index.html">AWS CLI Command Reference</a>
+        <ul class="nav">
+<li><a href="https://docs.aws.amazon.com/cli/latest/index.html">Home</a></li>
+<li><a href="https://docs.aws.amazon.com/cli/latest/userguide/">User Guide</a></li>
+<li><a href="https://forums.aws.amazon.com/forum.jspa?forumID=150">Forum</a></li>
+<li><a href="https://github.com/aws/aws-cli">GitHub</a></li>
+        </ul>
+        <div class="pull-right" id="github-stars">
+          <iframe src="./describe-images — AWS CLI 1.25.67 Command Reference_files/github-btn.html" allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px" sandbox="allow-scripts"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--REGION_DISCLAIMER_DO_NOT_REMOVE-->
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="https://docs.aws.amazon.com/cli/latest/genindex.html" title="General Index" accesskey="I">index</a></li>
+        <li class="right">
+          <a href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-import-image-tasks.html" title="describe-import-image-tasks" accesskey="N">next</a> |</li>
+        <li class="right">
+          <a href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-image-attribute.html" title="describe-image-attribute" accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="https://docs.aws.amazon.com/cli/latest/index.html">AWS CLI 1.25.67 Command Reference</a> »</li>
+          <li class="nav-item nav-item-1"><a href="https://docs.aws.amazon.com/cli/latest/reference/index.html">aws</a> »</li>
+          <li class="nav-item nav-item-2"><a href="https://docs.aws.amazon.com/cli/latest/reference/ec2/index.html" accesskey="U">ec2</a> »</li> 
+      </ul>
+    </div>
+    <div class="container">
+        
+    <div class="top-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-image-attribute.html" title="previous chapter (use the left arrow)">← describe-image-attribute</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-import-image-tasks.html" title="next chapter (use the right arrow)">describe-import-image-tasks →</a></li>
+      </ul>
+    </div>
+  
+        <div class="document clearer">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo left-bar-other">
+  <a href="https://docs.aws.amazon.com/cli/latest/index.html">
+    <img class="logo" src="./describe-images — AWS CLI 1.25.67 Command Reference_files/logo.png" alt="Logo" height="63">
+  </a>
+</p>
+  <h3><a href="https://docs.aws.amazon.com/cli/latest/index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html#">describe-images</a><ul>
+<li><a class="reference internal" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html#description">Description</a></li>
+<li><a class="reference internal" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html#synopsis">Synopsis</a></li>
+<li><a class="reference internal" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html#options">Options</a></li>
+<li><a class="reference internal" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html#global-options">Global Options</a></li>
+<li><a class="reference internal" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html#examples">Examples</a></li>
+<li><a class="reference internal" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html#output">Output</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="">
+    <h3>Quick search</h3>
+    <form class="form-search margin-top-1em" action="https://docs.aws.amazon.com/cli/latest/search.html" method="get">
+        <input type="text" name="q" style="width: 105px" class="input-small search-query">
+        <button type="submit" class="btn btn-small">Search</button>
+        <input type="hidden" name="check_keywords" value="yes">
+        <input type="hidden" name="area" value="default">
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div class="left-bar-other">
+  <h3>Feedback</h3>
+  <p class="feedback">Did you find this page useful? Do you have a suggestion to improve the documentation? <a href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AWS%20Command%20Line%20Interface&amp;hidden_guide_name=Reference&amp;topic_url=https%3A%2F%2Fdocs.aws.amazon.com%2Fcli%2Flatest%2Freference/ec2/describe-images.html">Give us feedback</a>.
+    <br>
+    If you would like to suggest an improvement or fix for the AWS CLI, check out our <a href="https://github.com/aws/aws-cli/blob/develop/CONTRIBUTING.md">contributing guide</a> on GitHub.</p>
+</div><div class="left-bar-other">
+  <h3>User Guide</h3>
+  <p>First time using the AWS CLI? See the
+  <a href="https://docs.aws.amazon.com/cli/latest/userguide/">User Guide</a> for
+  help getting started.</p>
+</div>
+        </div>
+      </div>
+            <div class="body">
+                <div class="well">
+                    <p>
+                        <strong>Note:</strong>
+                        You are viewing the documentation for an older major version of the AWS CLI (version 1).
+                    </p>
+                    <p>
+                        AWS CLI version 2, the latest major version of AWS CLI, is now stable and recommended for general use.
+                        
+                            To view this page for the AWS CLI version 2, click
+                            <a href="https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/describe-images.html">here</a>.
+                        
+                        For more information see the AWS CLI version 2
+                        <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html">installation instructions</a>
+                        and
+                        <a href="https://docs.aws.amazon.com/cli/latest/userguide/cliv2-migration.html">migration guide</a>.
+                    </p>
+                </div>
+              
+  <p>[ <a class="reference internal" href="https://docs.aws.amazon.com/cli/latest/reference/index.html#cli-aws"><span>aws</span></a> . <a class="reference internal" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/index.html#cli-aws-ec2"><span>ec2</span></a> ]</p>
+<div class="section" id="describe-images">
+<span id="cli-aws-ec2-describe-images"></span><h1>describe-images<a class="headerlink" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html#describe-images" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html#description" title="Permalink to this headline">¶</a></h2>
+<p>Describes the specified images (AMIs, AKIs, and ARIs) available to you or all of the images available to you.</p>
+<p>The images available to you include public images, private images that you own, and private images owned by other Amazon Web Services accounts for which you have explicit launch permissions.</p>
+<p>Recently deregistered images appear in the returned results for a short interval and then return empty results. After all instances that reference a deregistered AMI are terminated, specifying the ID of the image will eventually return an error indicating that the AMI ID cannot be found.</p>
+<p>See also: <a class="reference external" href="https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImages">AWS API Documentation</a></p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span>  describe-images
+[--executable-users &lt;value&gt;]
+[--filters &lt;value&gt;]
+[--image-ids &lt;value&gt;]
+[--owners &lt;value&gt;]
+[--include-deprecated | --no-include-deprecated]
+[--dry-run | --no-dry-run]
+[--cli-input-json &lt;value&gt;]
+[--generate-cli-skeleton &lt;value&gt;]
+[--debug]
+[--endpoint-url &lt;value&gt;]
+[--no-verify-ssl]
+[--no-paginate]
+[--output &lt;value&gt;]
+[--query &lt;value&gt;]
+[--profile &lt;value&gt;]
+[--region &lt;value&gt;]
+[--version &lt;value&gt;]
+[--color &lt;value&gt;]
+[--no-sign-request]
+[--ca-bundle &lt;value&gt;]
+[--cli-read-timeout &lt;value&gt;]
+[--cli-connect-timeout &lt;value&gt;]
+</pre></div>
+</div>
+</div>
+<div class="section" id="options">
+<h2>Options<a class="headerlink" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html#options" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">--executable-users</span></code> (list)</p>
+<blockquote>
+<div><p>Scopes the images by users with explicit launch permissions. Specify an Amazon Web Services account ID, <code class="docutils literal"><span class="pre">self</span></code> (the sender of the request), or <code class="docutils literal"><span class="pre">all</span></code> (public AMIs).</p>
+<ul class="simple">
+<li>If you specify an Amazon Web Services account ID that is not your own, only AMIs shared with that specific Amazon Web Services account ID are returned. However, AMIs that are shared with the account’s organization or organizational unit (OU) are not returned.</li>
+<li>If you specify <code class="docutils literal"><span class="pre">self</span></code> or your own Amazon Web Services account ID, AMIs shared with your account are returned. In addition, AMIs that are shared with the organization or OU of which you are member are also returned.</li>
+<li>If you specify <code class="docutils literal"><span class="pre">all</span></code> , all public AMIs are returned.</li>
+</ul>
+<p>(string)</p>
+</div></blockquote>
+<p>Syntax:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>"string" "string" ...
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">--filters</span></code> (list)</p>
+<blockquote>
+<div><p>The filters.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">architecture</span></code> - The image architecture (<code class="docutils literal"><span class="pre">i386</span></code> | <code class="docutils literal"><span class="pre">x86_64</span></code> | <code class="docutils literal"><span class="pre">arm64</span></code> ).</li>
+<li><code class="docutils literal"><span class="pre">block-device-mapping.delete-on-termination</span></code> - A Boolean value that indicates whether the Amazon EBS volume is deleted on instance termination.</li>
+<li><code class="docutils literal"><span class="pre">block-device-mapping.device-name</span></code> - The device name specified in the block device mapping (for example, <code class="docutils literal"><span class="pre">/dev/sdh</span></code> or <code class="docutils literal"><span class="pre">xvdh</span></code> ).</li>
+<li><code class="docutils literal"><span class="pre">block-device-mapping.snapshot-id</span></code> - The ID of the snapshot used for the Amazon EBS volume.</li>
+<li><code class="docutils literal"><span class="pre">block-device-mapping.volume-size</span></code> - The volume size of the Amazon EBS volume, in GiB.</li>
+<li><code class="docutils literal"><span class="pre">block-device-mapping.volume-type</span></code> - The volume type of the Amazon EBS volume (<code class="docutils literal"><span class="pre">io1</span></code> | <code class="docutils literal"><span class="pre">io2</span></code> | <code class="docutils literal"><span class="pre">gp2</span></code> | <code class="docutils literal"><span class="pre">gp3</span></code> | <code class="docutils literal"><span class="pre">sc1</span></code> | <code class="docutils literal"><span class="pre">st1</span></code> | <code class="docutils literal"><span class="pre">standard</span></code> ).</li>
+<li><code class="docutils literal"><span class="pre">block-device-mapping.encrypted</span></code> - A Boolean that indicates whether the Amazon EBS volume is encrypted.</li>
+<li><code class="docutils literal"><span class="pre">creation-date</span></code> - The time when the image was created, in the ISO 8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for example, <code class="docutils literal"><span class="pre">2021-09-29T11:04:43.305Z</span></code> . You can use a wildcard (<code class="docutils literal"><span class="pre">*</span></code> ), for example, <code class="docutils literal"><span class="pre">2021-09-29T*</span></code> , which matches an entire day.</li>
+<li><code class="docutils literal"><span class="pre">description</span></code> - The description of the image (provided during image creation).</li>
+<li><code class="docutils literal"><span class="pre">ena-support</span></code> - A Boolean that indicates whether enhanced networking with ENA is enabled.</li>
+<li><code class="docutils literal"><span class="pre">hypervisor</span></code> - The hypervisor type (<code class="docutils literal"><span class="pre">ovm</span></code> | <code class="docutils literal"><span class="pre">xen</span></code> ).</li>
+<li><code class="docutils literal"><span class="pre">image-id</span></code> - The ID of the image.</li>
+<li><code class="docutils literal"><span class="pre">image-type</span></code> - The image type (<code class="docutils literal"><span class="pre">machine</span></code> | <code class="docutils literal"><span class="pre">kernel</span></code> | <code class="docutils literal"><span class="pre">ramdisk</span></code> ).</li>
+<li><code class="docutils literal"><span class="pre">is-public</span></code> - A Boolean that indicates whether the image is public.</li>
+<li><code class="docutils literal"><span class="pre">kernel-id</span></code> - The kernel ID.</li>
+<li><code class="docutils literal"><span class="pre">manifest-location</span></code> - The location of the image manifest.</li>
+<li><code class="docutils literal"><span class="pre">name</span></code> - The name of the AMI (provided during image creation).</li>
+<li><code class="docutils literal"><span class="pre">owner-alias</span></code> - The owner alias (<code class="docutils literal"><span class="pre">amazon</span></code> | <code class="docutils literal"><span class="pre">aws-marketplace</span></code> ). The valid aliases are defined in an Amazon-maintained list. This is not the Amazon Web Services account alias that can be set using the IAM console. We recommend that you use the <strong>Owner</strong> request parameter instead of this filter.</li>
+<li><code class="docutils literal"><span class="pre">owner-id</span></code> - The Amazon Web Services account ID of the owner. We recommend that you use the <strong>Owner</strong> request parameter instead of this filter.</li>
+<li><code class="docutils literal"><span class="pre">platform</span></code> - The platform. To only list Windows-based AMIs, use <code class="docutils literal"><span class="pre">windows</span></code> .</li>
+<li><code class="docutils literal"><span class="pre">product-code</span></code> - The product code.</li>
+<li><code class="docutils literal"><span class="pre">product-code.type</span></code> - The type of the product code (<code class="docutils literal"><span class="pre">marketplace</span></code> ).</li>
+<li><code class="docutils literal"><span class="pre">ramdisk-id</span></code> - The RAM disk ID.</li>
+<li><code class="docutils literal"><span class="pre">root-device-name</span></code> - The device name of the root device volume (for example, <code class="docutils literal"><span class="pre">/dev/sda1</span></code> ).</li>
+<li><code class="docutils literal"><span class="pre">root-device-type</span></code> - The type of the root device volume (<code class="docutils literal"><span class="pre">ebs</span></code> | <code class="docutils literal"><span class="pre">instance-store</span></code> ).</li>
+<li><code class="docutils literal"><span class="pre">state</span></code> - The state of the image (<code class="docutils literal"><span class="pre">available</span></code> | <code class="docutils literal"><span class="pre">pending</span></code> | <code class="docutils literal"><span class="pre">failed</span></code> ).</li>
+<li><code class="docutils literal"><span class="pre">state-reason-code</span></code> - The reason code for the state change.</li>
+<li><code class="docutils literal"><span class="pre">state-reason-message</span></code> - The message for the state change.</li>
+<li><code class="docutils literal"><span class="pre">sriov-net-support</span></code> - A value of <code class="docutils literal"><span class="pre">simple</span></code> indicates that enhanced networking with the Intel 82599 VF interface is enabled.</li>
+<li><code class="docutils literal"><span class="pre">tag</span></code> :&lt;key&gt; - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key <code class="docutils literal"><span class="pre">Owner</span></code> and the value <code class="docutils literal"><span class="pre">TeamA</span></code> , specify <code class="docutils literal"><span class="pre">tag:Owner</span></code> for the filter name and <code class="docutils literal"><span class="pre">TeamA</span></code> for the filter value.</li>
+<li><code class="docutils literal"><span class="pre">tag-key</span></code> - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.</li>
+<li><code class="docutils literal"><span class="pre">virtualization-type</span></code> - The virtualization type (<code class="docutils literal"><span class="pre">paravirtual</span></code> | <code class="docutils literal"><span class="pre">hvm</span></code> ).</li>
+</ul>
+<p>(structure)</p>
+<blockquote>
+<div><p>A filter name and value pair that is used to return a more specific list of results from a describe operation. Filters can be used to match a set of resources by specific criteria, such as tags, attributes, or IDs.</p>
+<p>If you specify multiple filters, the filters are joined with an <code class="docutils literal"><span class="pre">AND</span></code> , and the request returns only results that match all of the specified filters.</p>
+<p>Name -&gt; (string)</p>
+<blockquote>
+<div>The name of the filter. Filter names are case-sensitive.</div></blockquote>
+<p>Values -&gt; (list)</p>
+<blockquote>
+<div><p>The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an <code class="docutils literal"><span class="pre">OR</span></code> , and the request returns all results that match any of the specified values.</p>
+<p>(string)</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>Shorthand Syntax:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>Name=string,Values=string,string ...
+</pre></div>
+</div>
+<p>JSON Syntax:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>[
+  {
+    "Name": "string",
+    "Values": ["string", ...]
+  }
+  ...
+]
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">--image-ids</span></code> (list)</p>
+<blockquote>
+<div><p>The image IDs.</p>
+<p>Default: Describes all images available to you.</p>
+<p>(string)</p>
+</div></blockquote>
+<p>Syntax:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>"string" "string" ...
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">--owners</span></code> (list)</p>
+<blockquote>
+<div><p>Scopes the results to images with the specified owners. You can specify a combination of Amazon Web Services account IDs, <code class="docutils literal"><span class="pre">self</span></code> , <code class="docutils literal"><span class="pre">amazon</span></code> , and <code class="docutils literal"><span class="pre">aws-marketplace</span></code> . If you omit this parameter, the results include all images for which you have launch permissions, regardless of ownership.</p>
+<p>(string)</p>
+</div></blockquote>
+<p>Syntax:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>"string" "string" ...
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">--include-deprecated</span></code> | <code class="docutils literal"><span class="pre">--no-include-deprecated</span></code> (boolean)</p>
+<blockquote>
+<div><p>If <code class="docutils literal"><span class="pre">true</span></code> , all deprecated AMIs are included in the response. If <code class="docutils literal"><span class="pre">false</span></code> , no deprecated AMIs are included in the response. If no value is specified, the default value is <code class="docutils literal"><span class="pre">false</span></code> .</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you are the AMI owner, all deprecated AMIs appear in the response regardless of the value (<code class="docutils literal"><span class="pre">true</span></code> or <code class="docutils literal"><span class="pre">false</span></code> ) that you set for this parameter.</p>
+</div>
+</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--dry-run</span></code> | <code class="docutils literal"><span class="pre">--no-dry-run</span></code> (boolean)</p>
+<blockquote>
+<div>Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is <code class="docutils literal"><span class="pre">DryRunOperation</span></code> . Otherwise, it is <code class="docutils literal"><span class="pre">UnauthorizedOperation</span></code> .</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--cli-input-json</span></code> (string)
+Performs service operation based on the JSON string provided. The JSON string follows the format provided by <code class="docutils literal"><span class="pre">--generate-cli-skeleton</span></code>. If other arguments are provided on the command line, the CLI values will override the JSON-provided values. It is not possible to pass arbitrary binary values using a JSON-provided value as the string will be taken literally.</p>
+<p><code class="docutils literal"><span class="pre">--generate-cli-skeleton</span></code> (string)
+Prints a JSON skeleton to standard output without sending an API request. If provided with no value or the value <code class="docutils literal"><span class="pre">input</span></code>, prints a sample input JSON that can be used as an argument for <code class="docutils literal"><span class="pre">--cli-input-json</span></code>. If provided with the value <code class="docutils literal"><span class="pre">output</span></code>, it validates the command inputs and returns a sample output JSON for that command.</p>
+</div>
+<div class="section" id="global-options">
+<h2>Global Options<a class="headerlink" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html#global-options" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">--debug</span></code> (boolean)</p>
+<p>Turn on debug logging.</p>
+<p><code class="docutils literal"><span class="pre">--endpoint-url</span></code> (string)</p>
+<p>Override command's default URL with the given URL.</p>
+<p><code class="docutils literal"><span class="pre">--no-verify-ssl</span></code> (boolean)</p>
+<p>By default, the AWS CLI uses SSL when communicating with AWS services. For each SSL connection, the AWS CLI will verify SSL certificates. This option overrides the default behavior of verifying SSL certificates.</p>
+<p><code class="docutils literal"><span class="pre">--no-paginate</span></code> (boolean)</p>
+<p>Disable automatic pagination.</p>
+<p><code class="docutils literal"><span class="pre">--output</span></code> (string)</p>
+<p>The formatting style for command output.</p>
+<ul class="simple">
+<li>json</li>
+<li>text</li>
+<li>table</li>
+</ul>
+<p><code class="docutils literal"><span class="pre">--query</span></code> (string)</p>
+<p>A JMESPath query to use in filtering the response data.</p>
+<p><code class="docutils literal"><span class="pre">--profile</span></code> (string)</p>
+<p>Use a specific profile from your credential file.</p>
+<p><code class="docutils literal"><span class="pre">--region</span></code> (string)</p>
+<p>The region to use. Overrides config/env settings.</p>
+<p><code class="docutils literal"><span class="pre">--version</span></code> (string)</p>
+<p>Display the version of this tool.</p>
+<p><code class="docutils literal"><span class="pre">--color</span></code> (string)</p>
+<p>Turn on/off color output.</p>
+<ul class="simple">
+<li>on</li>
+<li>off</li>
+<li>auto</li>
+</ul>
+<p><code class="docutils literal"><span class="pre">--no-sign-request</span></code> (boolean)</p>
+<p>Do not sign requests. Credentials will not be loaded if this argument is provided.</p>
+<p><code class="docutils literal"><span class="pre">--ca-bundle</span></code> (string)</p>
+<p>The CA certificate bundle to use when verifying SSL certificates. Overrides config/env settings.</p>
+<p><code class="docutils literal"><span class="pre">--cli-read-timeout</span></code> (int)</p>
+<p>The maximum socket read time in seconds. If the value is set to 0, the socket read will be blocking and not timeout. The default value is 60 seconds.</p>
+<p><code class="docutils literal"><span class="pre">--cli-connect-timeout</span></code> (int)</p>
+<p>The maximum socket connect time in seconds. If the value is set to 0, the socket connect will be blocking and not timeout. The default value is 60 seconds.</p>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html#examples" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>To use the following examples, you must have the AWS CLI installed and configured. See the <a class="reference external" href="https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-quickstart.html">Getting started guide</a> in the <em>AWS CLI User Guide</em> for more information.</p>
+<p class="last">Unless otherwise stated, all examples have unix-like quotation rules. These examples will need to be adapted to your terminal's quoting rules. See <a class="reference external" href="https://docs.aws.amazon.com/cli/v1/userguide/cli-usage-parameters-quoting-strings.html">Using quotation marks with strings</a> in the <em>AWS CLI User Guide</em> .</p>
+</div>
+<p><strong>Example 1: To describe an AMI</strong></p>
+<p>The following <code class="docutils literal"><span class="pre">describe-images</span></code> example describes the specified AMI in the specified Region.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>aws ec2 describe-images \
+    --region us-east-1 \
+    --image-ids ami-1234567890EXAMPLE
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">"Images"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"VirtualizationType"</span><span class="p">:</span> <span class="s2">"hvm"</span><span class="p">,</span>
+            <span class="s2">"Description"</span><span class="p">:</span> <span class="s2">"Provided by Red Hat, Inc."</span><span class="p">,</span>
+            <span class="s2">"PlatformDetails"</span><span class="p">:</span> <span class="s2">"Red Hat Enterprise Linux"</span><span class="p">,</span>
+            <span class="s2">"EnaSupport"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">"Hypervisor"</span><span class="p">:</span> <span class="s2">"xen"</span><span class="p">,</span>
+            <span class="s2">"State"</span><span class="p">:</span> <span class="s2">"available"</span><span class="p">,</span>
+            <span class="s2">"SriovNetSupport"</span><span class="p">:</span> <span class="s2">"simple"</span><span class="p">,</span>
+            <span class="s2">"ImageId"</span><span class="p">:</span> <span class="s2">"ami-1234567890EXAMPLE"</span><span class="p">,</span>
+            <span class="s2">"UsageOperation"</span><span class="p">:</span> <span class="s2">"RunInstances:0010"</span><span class="p">,</span>
+            <span class="s2">"BlockDeviceMappings"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"DeviceName"</span><span class="p">:</span> <span class="s2">"/dev/sda1"</span><span class="p">,</span>
+                    <span class="s2">"Ebs"</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">"SnapshotId"</span><span class="p">:</span> <span class="s2">"snap-111222333444aaabb"</span><span class="p">,</span>
+                        <span class="s2">"DeleteOnTermination"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                        <span class="s2">"VolumeType"</span><span class="p">:</span> <span class="s2">"gp2"</span><span class="p">,</span>
+                        <span class="s2">"VolumeSize"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                        <span class="s2">"Encrypted"</span><span class="p">:</span> <span class="n">false</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">"Architecture"</span><span class="p">:</span> <span class="s2">"x86_64"</span><span class="p">,</span>
+            <span class="s2">"ImageLocation"</span><span class="p">:</span> <span class="s2">"123456789012/RHEL-8.0.0_HVM-20190618-x86_64-1-Hourly2-GP2"</span><span class="p">,</span>
+            <span class="s2">"RootDeviceType"</span><span class="p">:</span> <span class="s2">"ebs"</span><span class="p">,</span>
+            <span class="s2">"OwnerId"</span><span class="p">:</span> <span class="s2">"123456789012"</span><span class="p">,</span>
+            <span class="s2">"RootDeviceName"</span><span class="p">:</span> <span class="s2">"/dev/sda1"</span><span class="p">,</span>
+            <span class="s2">"CreationDate"</span><span class="p">:</span> <span class="s2">"2019-05-10T13:17:12.000Z"</span><span class="p">,</span>
+            <span class="s2">"Public"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">"ImageType"</span><span class="p">:</span> <span class="s2">"machine"</span><span class="p">,</span>
+            <span class="s2">"Name"</span><span class="p">:</span> <span class="s2">"RHEL-8.0.0_HVM-20190618-x86_64-1-Hourly2-GP2"</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For more information, see <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html">Amazon Machine Images (AMI)</a> in the <em>Amazon EC2 User Guide</em>.</p>
+<p><strong>Example 2: To describe AMIs based on filters</strong></p>
+<p>The following <code class="docutils literal"><span class="pre">describe-images</span></code> example describes Windows AMIs provided by Amazon that are backed by Amazon EBS.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>aws ec2 describe-images \
+    --owners amazon \
+    --filters "Name=platform,Values=windows" "Name=root-device-type,Values=ebs"
+</pre></div>
+</div>
+<p>For an example of the output for <code class="docutils literal"><span class="pre">describe-images</span></code>, see Example 1.</p>
+<p>For additional examples using filters, see <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Filtering.html#Filtering_Resources_CLI">Listing and filtering your resources</a> in the <em>Amazon EC2 User Guide</em>.</p>
+<p><strong>Example 3: To describe AMIs based on tags</strong></p>
+<p>The following <code class="docutils literal"><span class="pre">describe-images</span></code> example describes all AMIs that have the tag <code class="docutils literal"><span class="pre">Type=Custom</span></code>. The example uses the <code class="docutils literal"><span class="pre">--query</span></code> parameter to display only the AMI IDs.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>aws ec2 describe-images \
+    --filters "Name=tag:Type,Values=Custom" \
+    --query 'Images[*].[ImageId]' \
+    --output text
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>ami-1234567890EXAMPLE
+ami-0abcdef1234567890
+</pre></div>
+</div>
+<p>For additional examples using tag filters, see <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#Using_Tags_CLI">Working with tags</a> in the <em>Amazon EC2 User Guide</em>.</p>
+</div>
+<div class="section" id="output">
+<h2>Output<a class="headerlink" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html#output" title="Permalink to this headline">¶</a></h2>
+<p>Images -&gt; (list)</p>
+<blockquote>
+<div><p>Information about the images.</p>
+<p>(structure)</p>
+<blockquote>
+<div><p>Describes an image.</p>
+<p>Architecture -&gt; (string)</p>
+<blockquote>
+<div>The architecture of the image.</div></blockquote>
+<p>CreationDate -&gt; (string)</p>
+<blockquote>
+<div>The date and time the image was created.</div></blockquote>
+<p>ImageId -&gt; (string)</p>
+<blockquote>
+<div>The ID of the AMI.</div></blockquote>
+<p>ImageLocation -&gt; (string)</p>
+<blockquote>
+<div>The location of the AMI.</div></blockquote>
+<p>ImageType -&gt; (string)</p>
+<blockquote>
+<div>The type of image.</div></blockquote>
+<p>Public -&gt; (boolean)</p>
+<blockquote>
+<div>Indicates whether the image has public launch permissions. The value is <code class="docutils literal"><span class="pre">true</span></code> if this image has public launch permissions or <code class="docutils literal"><span class="pre">false</span></code> if it has only implicit and explicit launch permissions.</div></blockquote>
+<p>KernelId -&gt; (string)</p>
+<blockquote>
+<div>The kernel associated with the image, if any. Only applicable for machine images.</div></blockquote>
+<p>OwnerId -&gt; (string)</p>
+<blockquote>
+<div>The ID of the Amazon Web Services account that owns the image.</div></blockquote>
+<p>Platform -&gt; (string)</p>
+<blockquote>
+<div>This value is set to <code class="docutils literal"><span class="pre">windows</span></code> for Windows AMIs; otherwise, it is blank.</div></blockquote>
+<p>PlatformDetails -&gt; (string)</p>
+<blockquote>
+<div>The platform details associated with the billing code of the AMI. For more information, see <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-billing-info.html">Understanding AMI billing</a> in the <em>Amazon Elastic Compute Cloud User Guide</em> .</div></blockquote>
+<p>UsageOperation -&gt; (string)</p>
+<blockquote>
+<div>The operation of the Amazon EC2 instance and the billing code that is associated with the AMI. <code class="docutils literal"><span class="pre">usageOperation</span></code> corresponds to the <a class="reference external" href="https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#Lineitem-details-O-Operation">lineitem/Operation</a> column on your Amazon Web Services Cost and Usage Report and in the <a class="reference external" href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html">Amazon Web Services Price List API</a> . You can view these fields on the <strong>Instances</strong> or <strong>AMIs</strong> pages in the Amazon EC2 console, or in the responses that are returned by the <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html">DescribeImages</a> command in the Amazon EC2 API, or the <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html">describe-images</a> command in the CLI.</div></blockquote>
+<p>ProductCodes -&gt; (list)</p>
+<blockquote>
+<div><p>Any product codes associated with the AMI.</p>
+<p>(structure)</p>
+<blockquote>
+<div><p>Describes a product code.</p>
+<p>ProductCodeId -&gt; (string)</p>
+<blockquote>
+<div>The product code.</div></blockquote>
+<p>ProductCodeType -&gt; (string)</p>
+<blockquote>
+<div>The type of product code.</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>RamdiskId -&gt; (string)</p>
+<blockquote>
+<div>The RAM disk associated with the image, if any. Only applicable for machine images.</div></blockquote>
+<p>State -&gt; (string)</p>
+<blockquote>
+<div>The current state of the AMI. If the state is <code class="docutils literal"><span class="pre">available</span></code> , the image is successfully registered and can be used to launch an instance.</div></blockquote>
+<p>BlockDeviceMappings -&gt; (list)</p>
+<blockquote>
+<div><p>Any block device mapping entries.</p>
+<p>(structure)</p>
+<blockquote>
+<div><p>Describes a block device mapping, which defines the EBS volumes and instance store volumes to attach to an instance at launch.</p>
+<p>DeviceName -&gt; (string)</p>
+<blockquote>
+<div>The device name (for example, <code class="docutils literal"><span class="pre">/dev/sdh</span></code> or <code class="docutils literal"><span class="pre">xvdh</span></code> ).</div></blockquote>
+<p>VirtualName -&gt; (string)</p>
+<blockquote>
+<div><p>The virtual device name (<code class="docutils literal"><span class="pre">ephemeral</span></code> N). Instance store volumes are numbered starting from 0. An instance type with 2 available instance store volumes can specify mappings for <code class="docutils literal"><span class="pre">ephemeral0</span></code> and <code class="docutils literal"><span class="pre">ephemeral1</span></code> . The number of available instance store volumes depends on the instance type. After you connect to the instance, you must mount the volume.</p>
+<p>NVMe instance store volumes are automatically enumerated and assigned a device name. Including them in your block device mapping has no effect.</p>
+<p>Constraints: For M3 instances, you must specify instance store volumes in the block device mapping for the instance. When you launch an M3 instance, we ignore any instance store volumes specified in the block device mapping for the AMI.</p>
+</div></blockquote>
+<p>Ebs -&gt; (structure)</p>
+<blockquote>
+<div><p>Parameters used to automatically set up EBS volumes when the instance is launched.</p>
+<p>DeleteOnTermination -&gt; (boolean)</p>
+<blockquote>
+<div>Indicates whether the EBS volume is deleted on instance termination. For more information, see <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#preserving-volumes-on-termination">Preserving Amazon EBS volumes on instance termination</a> in the <em>Amazon EC2 User Guide</em> .</div></blockquote>
+<p>Iops -&gt; (integer)</p>
+<blockquote>
+<div><p>The number of I/O operations per second (IOPS). For <code class="docutils literal"><span class="pre">gp3</span></code> , <code class="docutils literal"><span class="pre">io1</span></code> , and <code class="docutils literal"><span class="pre">io2</span></code> volumes, this represents the number of IOPS that are provisioned for the volume. For <code class="docutils literal"><span class="pre">gp2</span></code> volumes, this represents the baseline performance of the volume and the rate at which the volume accumulates I/O credits for bursting.</p>
+<p>The following are the supported values for each volume type:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">gp3</span></code> : 3,000-16,000 IOPS</li>
+<li><code class="docutils literal"><span class="pre">io1</span></code> : 100-64,000 IOPS</li>
+<li><code class="docutils literal"><span class="pre">io2</span></code> : 100-64,000 IOPS</li>
+</ul>
+<p>For <code class="docutils literal"><span class="pre">io1</span></code> and <code class="docutils literal"><span class="pre">io2</span></code> volumes, we guarantee 64,000 IOPS only for <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Instances built on the Nitro System</a> . Other instance families guarantee performance up to 32,000 IOPS.</p>
+<p>This parameter is required for <code class="docutils literal"><span class="pre">io1</span></code> and <code class="docutils literal"><span class="pre">io2</span></code> volumes. The default for <code class="docutils literal"><span class="pre">gp3</span></code> volumes is 3,000 IOPS. This parameter is not supported for <code class="docutils literal"><span class="pre">gp2</span></code> , <code class="docutils literal"><span class="pre">st1</span></code> , <code class="docutils literal"><span class="pre">sc1</span></code> , or <code class="docutils literal"><span class="pre">standard</span></code> volumes.</p>
+</div></blockquote>
+<p>SnapshotId -&gt; (string)</p>
+<blockquote>
+<div>The ID of the snapshot.</div></blockquote>
+<p>VolumeSize -&gt; (integer)</p>
+<blockquote>
+<div><p>The size of the volume, in GiBs. You must specify either a snapshot ID or a volume size. If you specify a snapshot, the default is the snapshot size. You can specify a volume size that is equal to or larger than the snapshot size.</p>
+<p>The following are the supported volumes sizes for each volume type:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">gp2</span></code> and <code class="docutils literal"><span class="pre">gp3</span></code> :1-16,384</li>
+<li><code class="docutils literal"><span class="pre">io1</span></code> and <code class="docutils literal"><span class="pre">io2</span></code> : 4-16,384</li>
+<li><code class="docutils literal"><span class="pre">st1</span></code> and <code class="docutils literal"><span class="pre">sc1</span></code> : 125-16,384</li>
+<li><code class="docutils literal"><span class="pre">standard</span></code> : 1-1,024</li>
+</ul>
+</div></blockquote>
+<p>VolumeType -&gt; (string)</p>
+<blockquote>
+<div>The volume type. For more information, see <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html">Amazon EBS volume types</a> in the <em>Amazon EC2 User Guide</em> . If the volume type is <code class="docutils literal"><span class="pre">io1</span></code> or <code class="docutils literal"><span class="pre">io2</span></code> , you must specify the IOPS that the volume supports.</div></blockquote>
+<p>KmsKeyId -&gt; (string)</p>
+<blockquote>
+<div><p>Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.</p>
+<p>This parameter is only supported on <code class="docutils literal"><span class="pre">BlockDeviceMapping</span></code> objects called by <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html">RunInstances</a> , <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotFleet.html">RequestSpotFleet</a> , and <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotInstances.html">RequestSpotInstances</a> .</p>
+</div></blockquote>
+<p>Throughput -&gt; (integer)</p>
+<blockquote>
+<div><p>The throughput that the volume supports, in MiB/s.</p>
+<p>This parameter is valid only for <code class="docutils literal"><span class="pre">gp3</span></code> volumes.</p>
+<p>Valid Range: Minimum value of 125. Maximum value of 1000.</p>
+</div></blockquote>
+<p>OutpostArn -&gt; (string)</p>
+<blockquote>
+<div><p>The ARN of the Outpost on which the snapshot is stored.</p>
+<p>This parameter is only supported on <code class="docutils literal"><span class="pre">BlockDeviceMapping</span></code> objects called by <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateImage.html">CreateImage</a> .</p>
+</div></blockquote>
+<p>Encrypted -&gt; (boolean)</p>
+<blockquote>
+<div><p>Indicates whether the encryption state of an EBS volume is changed while being restored from a backing snapshot. The effect of setting the encryption state to <code class="docutils literal"><span class="pre">true</span></code> depends on the volume origin (new or from a snapshot), starting encryption state, ownership, and whether encryption by default is enabled. For more information, see <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters">Amazon EBS encryption</a> in the <em>Amazon EC2 User Guide</em> .</p>
+<p>In no case can you remove encryption from an encrypted volume.</p>
+<p>Encrypted volumes can only be attached to instances that support Amazon EBS encryption. For more information, see <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances">Supported instance types</a> .</p>
+<p>This parameter is not returned by <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImageAttribute.html">DescribeImageAttribute</a> .</p>
+</div></blockquote>
+</div></blockquote>
+<p>NoDevice -&gt; (string)</p>
+<blockquote>
+<div>To omit the device from the block device mapping, specify an empty string. When this property is specified, the device is removed from the block device mapping regardless of the assigned value.</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>Description -&gt; (string)</p>
+<blockquote>
+<div>The description of the AMI that was provided during image creation.</div></blockquote>
+<p>EnaSupport -&gt; (boolean)</p>
+<blockquote>
+<div>Specifies whether enhanced networking with ENA is enabled.</div></blockquote>
+<p>Hypervisor -&gt; (string)</p>
+<blockquote>
+<div>The hypervisor type of the image.</div></blockquote>
+<p>ImageOwnerAlias -&gt; (string)</p>
+<blockquote>
+<div>The Amazon Web Services account alias (for example, <code class="docutils literal"><span class="pre">amazon</span></code> , <code class="docutils literal"><span class="pre">self</span></code> ) or the Amazon Web Services account ID of the AMI owner.</div></blockquote>
+<p>Name -&gt; (string)</p>
+<blockquote>
+<div>The name of the AMI that was provided during image creation.</div></blockquote>
+<p>RootDeviceName -&gt; (string)</p>
+<blockquote>
+<div>The device name of the root device volume (for example, <code class="docutils literal"><span class="pre">/dev/sda1</span></code> ).</div></blockquote>
+<p>RootDeviceType -&gt; (string)</p>
+<blockquote>
+<div>The type of root device used by the AMI. The AMI can use an Amazon EBS volume or an instance store volume.</div></blockquote>
+<p>SriovNetSupport -&gt; (string)</p>
+<blockquote>
+<div>Specifies whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.</div></blockquote>
+<p>StateReason -&gt; (structure)</p>
+<blockquote>
+<div><p>The reason for the state change.</p>
+<p>Code -&gt; (string)</p>
+<blockquote>
+<div>The reason code for the state change.</div></blockquote>
+<p>Message -&gt; (string)</p>
+<blockquote>
+<div><p>The message for the state change.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">Server.InsufficientInstanceCapacity</span></code> : There was insufficient capacity available to satisfy the launch request.</li>
+<li><code class="docutils literal"><span class="pre">Server.InternalError</span></code> : An internal error caused the instance to terminate during launch.</li>
+<li><code class="docutils literal"><span class="pre">Server.ScheduledStop</span></code> : The instance was stopped due to a scheduled retirement.</li>
+<li><code class="docutils literal"><span class="pre">Server.SpotInstanceShutdown</span></code> : The instance was stopped because the number of Spot requests with a maximum price equal to or higher than the Spot price exceeded available capacity or because of an increase in the Spot price.</li>
+<li><code class="docutils literal"><span class="pre">Server.SpotInstanceTermination</span></code> : The instance was terminated because the number of Spot requests with a maximum price equal to or higher than the Spot price exceeded available capacity or because of an increase in the Spot price.</li>
+<li><code class="docutils literal"><span class="pre">Client.InstanceInitiatedShutdown</span></code> : The instance was shut down using the <code class="docutils literal"><span class="pre">shutdown</span> <span class="pre">-h</span></code> command from the instance.</li>
+<li><code class="docutils literal"><span class="pre">Client.InstanceTerminated</span></code> : The instance was terminated or rebooted during AMI creation.</li>
+<li><code class="docutils literal"><span class="pre">Client.InternalError</span></code> : A client error caused the instance to terminate during launch.</li>
+<li><code class="docutils literal"><span class="pre">Client.InvalidSnapshot.NotFound</span></code> : The specified snapshot was not found.</li>
+<li><code class="docutils literal"><span class="pre">Client.UserInitiatedHibernate</span></code> : Hibernation was initiated on the instance.</li>
+<li><code class="docutils literal"><span class="pre">Client.UserInitiatedShutdown</span></code> : The instance was shut down using the Amazon EC2 API.</li>
+<li><code class="docutils literal"><span class="pre">Client.VolumeLimitExceeded</span></code> : The limit on the number of EBS volumes or total storage was exceeded. Decrease usage or request an increase in your account limits.</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>Tags -&gt; (list)</p>
+<blockquote>
+<div><p>Any tags assigned to the image.</p>
+<p>(structure)</p>
+<blockquote>
+<div><p>Describes a tag.</p>
+<p>Key -&gt; (string)</p>
+<blockquote>
+<div><p>The key of the tag.</p>
+<p>Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with <code class="docutils literal"><span class="pre">aws:</span></code> .</p>
+</div></blockquote>
+<p>Value -&gt; (string)</p>
+<blockquote>
+<div><p>The value of the tag.</p>
+<p>Constraints: Tag values are case-sensitive and accept a maximum of 256 Unicode characters.</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>VirtualizationType -&gt; (string)</p>
+<blockquote>
+<div>The type of virtualization of the AMI.</div></blockquote>
+<p>BootMode -&gt; (string)</p>
+<blockquote>
+<div>The boot mode of the image. For more information, see <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html">Boot modes</a> in the <em>Amazon Elastic Compute Cloud User Guide</em> .</div></blockquote>
+<p>TpmSupport -&gt; (string)</p>
+<blockquote>
+<div>If the image is configured for NitroTPM support, the value is <code class="docutils literal"><span class="pre">v2.0</span></code> . For more information, see <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html">NitroTPM</a> in the <em>Amazon Elastic Compute Cloud User Guide</em> .</div></blockquote>
+<p>DeprecationTime -&gt; (string)</p>
+<blockquote>
+<div>The date and time to deprecate the AMI, in UTC, in the following format: <em>YYYY</em> -<em>MM</em> -<em>DD</em> T*HH* :<em>MM</em> :<em>SS</em> Z. If you specified a value for seconds, Amazon EC2 rounds the seconds to the nearest minute.</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div>
+</div>
+
+
+            </div>
+          <div class="clearfix"></div>
+        </div>
+        
+    <div class="footer-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-image-attribute.html" title="previous chapter (use the left arrow)">← describe-image-attribute</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-import-image-tasks.html" title="next chapter (use the right arrow)">describe-import-image-tasks →</a></li>
+      </ul>
+    </div>
+  
+
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="https://docs.aws.amazon.com/cli/latest/genindex.html" title="General Index">index</a></li>
+        <li class="right">
+          <a href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-import-image-tasks.html" title="describe-import-image-tasks">next</a> |</li>
+        <li class="right">
+          <a href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-image-attribute.html" title="describe-image-attribute">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="https://docs.aws.amazon.com/cli/latest/index.html">AWS CLI 1.25.67 Command Reference</a> »</li>
+          <li class="nav-item nav-item-1"><a href="https://docs.aws.amazon.com/cli/latest/reference/index.html">aws</a> »</li>
+          <li class="nav-item nav-item-2"><a href="https://docs.aws.amazon.com/cli/latest/reference/ec2/index.html">ec2</a> »</li> 
+      </ul>
+    </div>
+  <div id="awsdocs-legal-zone-copyright" class="footer container">
+      <a href="https://aws.amazon.com/privacy" target="_blank">Privacy</a> |
+        <a href="https://aws.amazon.com/terms/" target="_blank">Site terms</a> |
+        <a id="awsdocs-cookie-preferences-link" href="https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html#">Cookie preferences</a> |
+          <span class="copyright">
+      © 2022, Amazon Web Services, Inc. or its affiliates. All rights reserved.</span>
+        </div>
+
+
+
+  
+    
+  
+  
+<script type="text/javascript" src="./describe-images — AWS CLI 1.25.67 Command Reference_files/awshome_s_code.js.download"></script><iframe sandbox="allow-scripts" title="Adobe ID Syncing iFrame" id="destination_publishing_iframe_aws_0" name="destination_publishing_iframe_aws_0_name" src="./describe-images — AWS CLI 1.25.67 Command Reference_files/dest5.html" class="aamIframeLoaded" style="display: none; width: 0px; height: 0px;"></iframe></body></html>

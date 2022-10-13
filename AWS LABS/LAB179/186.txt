@@ -1,0 +1,18 @@
+ARN
+arn:aws:sns:us-west-2:860220070458:s3NotificationTopic
+
+ aws s3api put-bucket-notification-configuration --bucket cafe-lupertech --notification-configuration file://s3EventNotification.json
+
+
+{"Service":"Amazon S3","Event":"s3:TestEvent","Time":"2019-04-26T06:04:27.405Z","Bucket":"cafe-lupertech","RequestId":"7A87C25E0323B2F4","HostId":"fB3Z...SD////PWubF3E7RYtVupg="}
+
+
+aws s3api put-object --bucket cafe-lupertech --key images/Caramel-Delight.jpg --body ~/new-images/Caramel-Delight.jpg
+
+aws s3api get-object --bucket cafe-lupertech --key images/Donuts.jpg Donuts.jpg
+
+
+aws s3api delete-object --bucket cafe-lupertech --key images/Strawberry-Tarts.jpg
+
+aws s3api put-object-acl --bucket cafe-lupertech --key images/Donuts.jpg --acl public-read
+
